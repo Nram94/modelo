@@ -1,0 +1,42 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}Dashboard de Productos{% endblock %}
+
+{% block header_title %}Listado de Productos del Inventario{% endblock %}
+
+{% block content %}
+    <h1>Nuestros Productos Disponibles</h1>
+
+    <p><a href="{% url 'inventario:agregar_producto' %}" class="btn">Agregar Nuevo Producto</a></p>
+
+    {% if productos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th> {# Nueva columna para el enlace de detalle #}
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.id }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>${{ producto.precio|floatformat:2 }}</td>
+                    <td>{{ producto.stock }}</td>
+                    <td>
+                        {# Enlace a la página de detalle del producto #}
+                        {# [cite: 29] Usamos 'producto_detalle' y pasamos el pk del producto #}
+                        <a href="{% url 'inventario:producto_detalle' pk=producto.pk %}">Ver Detalle</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay productos disponibles en este momento. ¡Añade algunos!</p>
+    {% endif %}
+{% endblock %}

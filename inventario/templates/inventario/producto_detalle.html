@@ -1,0 +1,94 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}Detalle de Producto: {{ producto.nombre }}{% endblock %}
+
+{% block header_title %}Detalle de {{ producto.nombre }}{% endblock %}
+
+{% block content %}
+    <div class="product-detail">
+        <h1>{{ producto.nombre }}</h1>
+        <p><strong>Descripción:</strong> {{ producto.descripcion|default:"Sin descripción." }}</p>
+        <p><strong>Precio:</strong> ${{ producto.precio|floatformat:2 }}</p>
+        <p><strong>Stock:</strong> {{ producto.stock }} unidades</p>
+        <p><small>Creado el: {{ producto.fecha_creacion|date:"d M, Y H:i" }}</small></p>
+        <p><small>Última actualización: {{ producto.fecha_actualizacion|date:"d M, Y H:i" }}</small></p>
+    </div>
+
+    <hr>
+
+    <div class="product-comments">
+        <h2>Comentarios sobre {{ producto.nombre }}</h2>
+        {% if producto.comentarios.all %} {# Accediendo a los comentarios via related_name #}
+            <ul class="comment-list">
+                {% for comentario in producto.comentarios.all %}
+                <li class="comment-item">
+                    <p class="comment-text">{{ comentario.texto }}</p>
+                    <p class="comment-meta">
+                        Por: {{ comentario.autor|default:"Anónimo" }} el {{ comentario.fecha_creacion|date:"d M, Y H:i" }}
+                    </p>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay comentarios para este producto aún.</p>
+        {% endif %}
+    </div>
+
+    <p><a href="{% url 'inventario:productos' %}" class="btn-back">Volver a la lista de productos</a></p>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+    .product-detail, .product-comments {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+    .product-detail h1 {
+        color: #333;
+        margin-top: 0;
+    }
+    .product-detail p {
+        margin-bottom: 5px;
+    }
+    .product-comments h2 {
+        color: #555;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+    .comment-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .comment-item {
+        background-color: #fff;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-bottom: 10px;
+    }
+    .comment-text {
+        font-size: 1.1em;
+        margin-bottom: 5px;
+    }
+    .comment-meta {
+        font-size: 0.85em;
+        color: #777;
+        text-align: right;
+    }
+    .btn-back {
+        display: inline-block;
+        background-color: #6c757d;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 20px;
+    }
+    .btn-back:hover {
+        background-color: #5a6268;
+    }
+</style>
+{% endblock %}

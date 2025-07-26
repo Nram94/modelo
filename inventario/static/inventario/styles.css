@@ -1,0 +1,85 @@
+/* inventario/static/inventario/css/styles.css */
+
+/* Estilos para el cuerpo general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 20px;
+    text-align: center;
+}
+
+/* Estilos para la barra de navegación */
+nav {
+    background-color: #555;
+    padding: 0.5em 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para el contenedor principal de contenido */
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el pie de página */
+footer {
+    text-align: center;
+    padding: 1em;
+    margin-top: 20px;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilos específicos para la tabla de productos (de lista_productos.html) */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Estilos específicos para el saludo (de saludo.html) */
+.saludo-header { /* Creamos una clase para el h1 del saludo */
+    margin-top: 50px;
+    text-align: center; /* Movemos el text-align de body general al h1 aquí si es necesario */
+}
+
+/* Si quieres que el body del saludo tenga también text-align: center, puedes aplicarlo aquí,
+   o si es algo global, dejarlo en el body del styles.css.
+   Para este caso, aplicamos la clase directamente al h1 en el template.
+*/
