@@ -49,7 +49,7 @@ Cada elemento representa una capa del patrón MVC:
 1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/Nram94/modelos.git
+   git clone https://github.com/Nram94/modelo.git
    cd vistaControlador
 
 
