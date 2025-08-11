@@ -50,7 +50,7 @@ Cada elemento representa una capa del patrón MVC:
 
    ```bash
    git clone https://github.com/Nram94/modelo.git
-   cd vistaControlador
+   cd modelo
 
 
 ## 📄 Licencia
